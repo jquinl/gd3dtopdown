@@ -1,5 +1,5 @@
-#ifndef EXAMPLE_REGISTER_TYPES_H
-#define EXAMPLE_REGISTER_TYPES_H
+#ifndef GD3D_REGISTER_TYPES_H
+#define GD3D_REGISTER_TYPES_H
 
 #include <godot_cpp/core/class_db.hpp>
 

@@ -14,10 +14,10 @@ env = SConscript("godot-cpp/SConstruct")
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
 
 if env["target"] in ["editor", "template_debug"]:
     env.AppendUnique(CPPDEFINES=["DEBUG_ENABLED", "DEBUG_METHODS_ENABLED"])
-sources = Glob("src/*.cpp")
 
 library = env.SharedLibrary(
     "../../bin/gd3d_topdown{}{}".format(

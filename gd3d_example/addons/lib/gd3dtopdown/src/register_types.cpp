@@ -1,6 +1,7 @@
 #include "register_types.hpp"
 
-#include <godot/gdnative_interface.h>
+#include <gdextension_interface.h>
+
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
@@ -12,6 +13,7 @@
 #include "interior_detector_gd3d.hpp"
 #include "selectable_gd3d.hpp"
 #include "tween_mesh_instance_gd3d.hpp"
+
 using namespace godot;
 
 void initialize_gd3d_topdown_module(ModuleInitializationLevel p_level)
@@ -20,7 +22,7 @@ void initialize_gd3d_topdown_module(ModuleInitializationLevel p_level)
     {
 		return;
 	}
-    
+
     ClassDB::register_class<CharacterGD3D>();
     ClassDB::register_class<VisualObstacleGD3D>();
     ClassDB::register_class<VisualDetectorGD3D>();
@@ -39,13 +41,13 @@ void uninitialize_gd3d_topdown_module(ModuleInitializationLevel p_level)
 }
 
 extern "C" {
-GDNativeBool GDN_EXPORT gd3d_topdown_library_init(const GDNativeInterface *p_interface, const GDNativeExtensionClassLibraryPtr p_library, GDNativeInitialization *r_initialization) {
-    godot::GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
+    GDExtensionBool GDE_EXPORT gd3d_topdown_library_init(const GDExtensionInterface *p_interface, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
+        godot::GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
 
-    init_obj.register_initializer(initialize_gd3d_topdown_module);
-    init_obj.register_terminator(uninitialize_gd3d_topdown_module);
+        init_obj.register_initializer(initialize_gd3d_topdown_module);
+        init_obj.register_terminator(uninitialize_gd3d_topdown_module);
 
-    init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
-    return init_obj.init();
-}
+        init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+        return init_obj.init();
+    }
 }
