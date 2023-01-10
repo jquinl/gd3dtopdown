@@ -1,5 +1,5 @@
 # GD3Dtopdown
-Top down 3D controller for the Godot Game Engine using GDextension (Godot 4 beta 10 (Broken due to gdextensino bug), will update until release)  
+Top down 3D controller for the Godot Game Engine using GDextension (Godot 4 beta 10, will update until release)  
 
 This is a character controller that I'm using in a personal project. Decided to share it since It's using GDExtension and might be of use to someone should they get stuck.  
 
